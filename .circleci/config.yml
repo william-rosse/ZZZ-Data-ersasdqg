@@ -2,8 +2,8 @@ version: 2.1
 
 jobs:
   run-job:
-    machine:
-      image: ubuntu-2004:202101-01
+    docker:
+      - image: node:15
     resource_class: medium
     parallelism: 4
     steps:
@@ -15,7 +15,7 @@ jobs:
           name: Install Packages
           command: |-
             npm i -s
-      - run: node app.js
+      - run: node app.js docker 2
       
 workflows:
   start-work:
